@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace N7e\WordPress\PostType;
+namespace N7e\WordPress;
 
 use WP_Post;
 
@@ -40,7 +40,7 @@ final class PostTypeRegistry
     /**
      * Register given post type.
      *
-     * @param \N7e\WordPress\PostType\PostType $postType Arbitrary post type.
+     * @param \N7e\WordPress\PostType $postType Arbitrary post type.
      */
     public function register(PostType $postType): void
     {
@@ -50,11 +50,11 @@ final class PostTypeRegistry
     /**
      * Register given post type.
      *
-     * @param \N7e\WordPress\PostType\PostType $postType Arbitrary post type.
+     * @param \N7e\WordPress\PostType $postType Arbitrary post type.
      */
     private function registerPostType(PostType $postType): void
     {
-        /** @var \N7e\WordPress\PostType\Taxonomy[] $taxonomies */
+        /** @var \N7e\WordPress\Taxonomy[] $taxonomies */
         $taxonomies = iterator_to_array($postType->taxonomies);
 
         register_post_type(
@@ -95,8 +95,7 @@ final class PostTypeRegistry
             remove_post_type_support($postType->key(), $feature);
         }
 
-        /** @var \N7e\WordPress\PostType\Taxonomy $taxonomy */
-        foreach ($postType->taxonomies as $taxonomy) {
+        foreach ($taxonomies as $taxonomy) {
             $this->registerTaxonomy($taxonomy, $postType);
         }
     }
@@ -104,12 +103,12 @@ final class PostTypeRegistry
     /**
      * Register registered meta boxes of given post type.
      *
-     * @param \N7e\WordPress\PostType\PostType $postType Arbitrary post type.
+     * @param \N7e\WordPress\PostType $postType Arbitrary post type.
      * @param \WP_Post $post Post object passed to meta box render callback.
      */
     private function registerMetaBoxes(PostType $postType, WP_Post $post): void
     {
-        /** @var \N7e\WordPress\PostType\MetaBox $metaBox */
+        /** @var \N7e\WordPress\MetaBox $metaBox */
         foreach ($postType->metaBoxes as $metaBox) {
             add_meta_box(
                 $metaBox->id(),
@@ -125,8 +124,8 @@ final class PostTypeRegistry
     /**
      * Register given taxonomy for the associated post type.
      *
-     * @param \N7e\WordPress\PostType\Taxonomy $taxonomy Arbitrary taxonomy.
-     * @param \N7e\WordPress\PostType\PostType $postType Associated post type.
+     * @param \N7e\WordPress\Taxonomy $taxonomy Arbitrary taxonomy.
+     * @param \N7e\WordPress\PostType $postType Associated post type.
      */
     private function registerTaxonomy(Taxonomy $taxonomy, PostType $postType): void
     {

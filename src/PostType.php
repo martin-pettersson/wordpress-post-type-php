@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace N7e\WordPress\PostType;
+namespace N7e\WordPress;
 
 /**
  * Represents a WordPress post type.
@@ -19,16 +19,16 @@ abstract class PostType
     /**
      * Registered post type meta boxes.
      *
-     * @var \N7e\WordPress\PostType\MetaBoxRegistry
+     * @var \N7e\WordPress\MetaBoxCollection
      */
-    public readonly MetaBoxRegistry $metaBoxes;
+    public readonly MetaBoxCollection $metaBoxes;
 
     /**
      * Registered post type taxonomies.
      *
-     * @var \N7e\WordPress\PostType\TaxonomyRegistry
+     * @var \N7e\WordPress\TaxonomyCollection
      */
-    public readonly TaxonomyRegistry $taxonomies;
+    public readonly TaxonomyCollection $taxonomies;
 
     /**
      * Post type key.
@@ -320,8 +320,8 @@ abstract class PostType
      */
     public function __construct()
     {
-        $this->metaBoxes = new MetaBoxRegistry();
-        $this->taxonomies = new TaxonomyRegistry();
+        $this->metaBoxes = new MetaBoxCollection();
+        $this->taxonomies = new TaxonomyCollection();
     }
 
     /**

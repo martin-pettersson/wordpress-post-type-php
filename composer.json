@@ -22,19 +22,21 @@
     },
     "autoload": {
         "psr-4": {
-            "N7e\\WordPress\\PostType\\": "src/"
+            "N7e\\WordPress\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "N7e\\WordPress\\PostType\\": "test/"
+            "N7e\\WordPress\\": "test/"
         },
         "classmap": [
             "vendor/johnpbloch/wordpress-core"
         ]
     },
     "require": {
-        "php": ">=8.3"
+        "php": ">=8.3",
+        "n7e/wordpress-taxonomy": "^0.2.0",
+        "n7e/wordpress-meta-box": "^0.1.0"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.15.0",

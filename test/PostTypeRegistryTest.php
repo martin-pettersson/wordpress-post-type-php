@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace N7e\WordPress\PostType;
+namespace N7e\WordPress;
 
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\Attributes\Before;
@@ -175,7 +175,7 @@ final class PostTypeRegistryTest extends TestCase
             ->willReturnCallback(fn($id, $title, $renderCallback) => $renderCallback());
         $this->metaBoxMock->expects($this->once())->method('render')->with($this->postMock);
 
-        $this->postTypeMock->metaBoxes->register($this->metaBoxMock);
+        $this->postTypeMock->metaBoxes->add($this->metaBoxMock);
         $this->registry->register($this->postTypeMock);
     }
 
@@ -222,7 +222,7 @@ final class PostTypeRegistryTest extends TestCase
                 })
             );
 
-        $this->postTypeMock->taxonomies->register($this->taxonomyMock);
+        $this->postTypeMock->taxonomies->add($this->taxonomyMock);
         $this->registry->register($this->postTypeMock);
     }
 }

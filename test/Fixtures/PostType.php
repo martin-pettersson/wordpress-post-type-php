@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace N7e\WordPress\PostType\Fixtures;
+namespace N7e\WordPress\Fixtures;
 
 use N7e\WordPress;
 use Override;
 
-final class PostType extends WordPress\PostType\PostType
+final class PostType extends WordPress\PostType
 {
     protected string $key = 'key';
 

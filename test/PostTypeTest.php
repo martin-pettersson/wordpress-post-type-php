@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace N7e\WordPress\PostType;
+namespace N7e\WordPress;
 
 use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\CoversClass;
