@@ -1,0 +1,8 @@
+parameters:
+    phpVersion: 80300
+    level: 9
+    paths:
+        - src
+    ignoreErrors:
+        - identifier: missingType.generics
+        - identifier: missingType.iterableValue
